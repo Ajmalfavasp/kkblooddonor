@@ -7,7 +7,7 @@ const app=express().use(body_parser.json());
 
 // const token=process.env.TOKEN;
 // const mytoken=process.env.MYTOKEN;
-const token='EAAKnkLmOpa8BAEZBigm52TZAvxrsTVWJChpWQ7OVChFZCHsJf82towpMKKnmysQRdc0cYQrXW99f0WBJiAp2EPyMeppTq6sTsdui6dxpZCG1jI7BBA0TXeEschiooBjuYSZCdk5lQrcaapLJJuKzNeqUZAkaD4ZCZBf63As70EDG5ezZCFKS0gRXXVoRRC9UkMjE9H0uVxRIvngZDZD';
+const token='EAAKnkLmOpa8BAF7iYRZAODe6ZBLTf0kk7ftSZAvLFiv6ek4KMZCRsTIkv7RZAgv8UqncIAZBrWG2HXZCx5dEYwENxU3AWZAke9edoOQk2dyCJKITFt4apUnx5kzpiBUCXA4ldNK1kru2iXB10lT8iip3e1xGN4wUjd1GXA3aVLZAQ7cxvzA5jNd0z8mk7mt2V4NaP3v5c4eyfjQZDZD';
 const mytoken='kkblooddonorapp';
 
 app.listen(process.env.PORT,()=>{
@@ -16,6 +16,7 @@ app.listen(process.env.PORT,()=>{
 
 //to verify the callback url from dashboard side - cloud api side
 app.get("/webhook",(req,res)=>{
+    console.log("webhook is");
    let mode=req.query["hub.mode"];
    let challange=req.query["hub.challenge"];
    let token=req.query["hub.verify_token"];
@@ -40,7 +41,6 @@ app.post("/webhook",(req,res)=>{ //i want some
     console.log(JSON.stringify(body_param,null,2));
 
     if(body_param.object){
-        console.log("inside body param");
         if(body_param.entry && 
             body_param.entry[0].changes && 
             body_param.entry[0].changes[0].value.messages && 
